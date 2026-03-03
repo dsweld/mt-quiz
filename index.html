@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Peak Quiz</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    margin: 24px 0 8px;
+    font-size: 1.6rem;
+    color: #a8d8ea;
+    letter-spacing: 0.5px;
+  }
+
+  #guess-counter {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 12px;
+  }
+
+  /* Image area */
+  #image-wrap {
+    width: 90vw;
+    max-width: 900px;
+    height: 60vh;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f0f23;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    border: 1px solid #2a2a4a;
+  }
+
+  #mountain-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  /* Input area */
+  #input-area {
+    position: relative;
+    width: 90vw;
+    max-width: 500px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  #guess-input {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 2px solid #3a3a5a;
+    border-radius: 8px;
+    background: #16213e;
+    color: #e0e0e0;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #guess-input:focus { border-color: #a8d8ea; }
+  #guess-input:disabled { opacity: 0.5; }
+
+  #guess-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: #a8d8ea;
+    color: #1a1a2e;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #guess-btn:hover:not(:disabled) { background: #88c8da; }
+  #guess-btn:disabled { opacity: 0.4; cursor: default; }
+
+  /* Autocomplete dropdown */
+  #ac-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 68px; /* leave room for button */
+    background: #16213e;
+    border: 1px solid #3a3a5a;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 10;
+    display: none;
+  }
+  #ac-list.open { display: block; }
+
+  .ac-item {
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  .ac-item:hover, .ac-item.active {
+    background: #2a3a5e;
+    color: #fff;
+  }
+
+  /* Feedback area */
+  #feedback {
+    width: 90vw;
+    max-width: 600px;
+    text-align: center;
+    min-height: 60px;
+    margin-bottom: 12px;
+  }
+
+  .feedback-correct {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #4ade80;
+  }
+
+  .feedback-wrong {
+    font-size: 1.05rem;
+    color: #f87171;
+    margin-bottom: 4px;
+  }
+
+  .feedback-hint {
+    font-size: 0.95rem;
+    color: #facc15;
+  }
+
+  /* Result line (Yes! / Out of guesses) — below input, above reveal */
+  #result {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  /* Reveal card */
+  #reveal {
+    display: none;
+    width: 90vw;
+    max-width: 500px;
+    background: #16213e;
+    border: 1px solid #3a3a5a;
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  #reveal.show { display: block; }
+  #reveal h2 { color: #a8d8ea; margin-bottom: 8px; font-size: 1.4rem; }
+  #reveal .stat { font-size: 1.05rem; margin: 4px 0; }
+  #reveal .stat span { color: #a8d8ea; font-weight: 600; }
+
+  #next-btn {
+    margin-top: 16px;
+    padding: 10px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: #a8d8ea;
+    color: #1a1a2e;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #next-btn:hover { background: #88c8da; }
+
+  /* Guess history */
+  #history {
+    width: 90vw;
+    max-width: 500px;
+    margin-bottom: 8px;
+  }
+  .history-item {
+    font-size: 0.9rem;
+    color: #888;
+    padding: 2px 0;
+  }
+  .history-item .x { color: #f87171; }
+</style>
+</head>
+<body>
+
+<h1>Washington Peak Quiz</h1>
+<div id="guess-counter">Guess 1 of 5</div>
+
+<div id="image-wrap">
+  <img id="mountain-img" src="" alt="Mystery mountain">
+</div>
+
+<div id="feedback"></div>
+<div id="history"></div>
+
+<div id="input-area">
+  <input id="guess-input" type="text" placeholder="Type a mountain name..." autocomplete="off">
+  <button id="guess-btn">Guess</button>
+  <div id="ac-list"></div>
+</div>
+
+<div id="result"></div>
+
+<div id="reveal">
+  <h2 id="reveal-name"></h2>
+  <p class="stat">Elevation: <span id="reveal-elev"></span></p>
+  <p class="stat">Prominence: <span id="reveal-prom"></span></p>
+  <button id="next-btn">Next Mountain</button>
+</div>
+
+<script>
+(function() {
+  const MAX_GUESSES = 5;
+  let mountains = [];
+  let current = null;    // { name, elevation_ft, prominence_ft, lat, lon, images }
+  let guessNum = 0;
+  let done = false;
+  let acIndex = -1;      // active autocomplete index
+
+  // ---- Geo utilities ----
+  const DEG2RAD = Math.PI / 180;
+  const R_MILES = 3958.8;  // Earth radius in miles
+
+  function haversine(lat1, lon1, lat2, lon2) {
+    const dLat = (lat2 - lat1) * DEG2RAD;
+    const dLon = (lon2 - lon1) * DEG2RAD;
+    const a = Math.sin(dLat / 2) ** 2
+            + Math.cos(lat1 * DEG2RAD) * Math.cos(lat2 * DEG2RAD) * Math.sin(dLon / 2) ** 2;
+    return R_MILES * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function bearing(lat1, lon1, lat2, lon2) {
+    const dLon = (lon2 - lon1) * DEG2RAD;
+    const y = Math.sin(dLon) * Math.cos(lat2 * DEG2RAD);
+    const x = Math.cos(lat1 * DEG2RAD) * Math.sin(lat2 * DEG2RAD)
+            - Math.sin(lat1 * DEG2RAD) * Math.cos(lat2 * DEG2RAD) * Math.cos(dLon);
+    return (Math.atan2(y, x) / DEG2RAD + 360) % 360;
+  }
+
+  function toCardinal(deg) {
+    const dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+    return dirs[Math.round(deg / 45) % 8];
+  }
+
+  function geoHint(from, to) {
+    // from = guessed mountain, to = answer
+    if (!from.lat || !from.lon || !to.lat || !to.lon) return "";
+    const dist = haversine(from.lat, from.lon, to.lat, to.lon);
+    const dir  = toCardinal(bearing(from.lat, from.lon, to.lat, to.lon));
+    return ` \u2014 ${Math.round(dist)} mi ${dir}`;
+  }
+
+  const img       = document.getElementById("mountain-img");
+  const input     = document.getElementById("guess-input");
+  const btn       = document.getElementById("guess-btn");
+  const acList    = document.getElementById("ac-list");
+  const feedback  = document.getElementById("feedback");
+  const history   = document.getElementById("history");
+  const counter   = document.getElementById("guess-counter");
+  const result    = document.getElementById("result");
+  const reveal    = document.getElementById("reveal");
+  const revName   = document.getElementById("reveal-name");
+  const revElev   = document.getElementById("reveal-elev");
+  const revProm   = document.getElementById("reveal-prom");
+  const nextBtn   = document.getElementById("next-btn");
+
+  // ---- Data loading ----
+  fetch("data.json")
+    .then(r => r.json())
+    .then(data => { mountains = data; newRound(); })
+    .catch(e => { feedback.innerHTML = '<span class="feedback-wrong">Failed to load data.</span>'; });
+
+  // ---- Game logic ----
+  function newRound() {
+    current = mountains[Math.floor(Math.random() * mountains.length)];
+    const imgUrl = current.images[Math.floor(Math.random() * current.images.length)];
+    img.src = encodeURI(imgUrl);
+    guessNum = 0;
+    done = false;
+    input.value = "";
+    input.disabled = false;
+    btn.disabled = false;
+    feedback.innerHTML = "";
+    history.innerHTML = "";
+    result.innerHTML = "";
+    reveal.classList.remove("show");
+    acList.classList.remove("open");
+    acIndex = -1;
+    updateCounter();
+    input.focus();
+  }
+
+  function updateCounter() {
+    counter.textContent = guessNum === 0
+      ? `Guess 1 of ${MAX_GUESSES}`
+      : `Guess ${guessNum} of ${MAX_GUESSES}`;
+  }
+
+  function submitGuess() {
+    if (done) return;
+    const guess = input.value.trim();
+    if (!guess) return;
+
+    // Find the guessed mountain in our data
+    const guessedMtn = mountains.find(m => m.name.toLowerCase() === guess.toLowerCase());
+    if (!guessedMtn) {
+      feedback.innerHTML = '<span class="feedback-wrong">Pick a mountain from the list.</span>';
+      return;
+    }
+
+    guessNum++;
+    updateCounter();
+    input.value = "";
+    closeAC();
+
+    if (guessedMtn.name === current.name) {
+      // Correct!
+      done = true;
+      feedback.innerHTML = "";
+      result.innerHTML = '<span class="feedback-correct">Yes!</span>';
+      showReveal();
+      return;
+    }
+
+    // Wrong guess — build hint with elevation + distance/direction
+    const elevDir = current.elevation_ft > guessedMtn.elevation_ft ? "higher" : "lower";
+    const geo = geoHint(guessedMtn, current);
+    const hint = `The true summit is <strong>${elevDir}</strong> than ${guessedMtn.name} (${guessedMtn.elevation_ft.toLocaleString()} ft)${geo}`;
+    feedback.innerHTML = `<div class="feedback-wrong">No!</div><div class="feedback-hint">${hint}</div>`;
+
+    // Add to history
+    const tooDir = elevDir === "higher" ? "too low" : "too high";
+    const histGeo = geo ? ` ${geo.trim()}` : "";
+    history.innerHTML += `<div class="history-item"><span class="x">&#10007;</span> ${guessedMtn.name} (${guessedMtn.elevation_ft.toLocaleString()} ft) – ${tooDir}${histGeo}</div>`;
+
+    if (guessNum >= MAX_GUESSES) {
+      done = true;
+      feedback.innerHTML = "";
+      result.innerHTML = `<div class="feedback-wrong">Out of guesses!</div>`;
+      showReveal();
+    }
+  }
+
+  function showReveal() {
+    input.disabled = true;
+    btn.disabled = true;
+    revName.textContent = current.name;
+    revElev.textContent = current.elevation_ft.toLocaleString() + " ft";
+    revProm.textContent = current.prominence_ft.toLocaleString() + " ft";
+    reveal.classList.add("show");
+  }
+
+  // ---- Autocomplete ----
+  function getMatches(query) {
+    if (!query) return [];
+    const q = query.toLowerCase();
+    return mountains
+      .filter(m => m.name.toLowerCase().includes(q))
+      .sort((a, b) => {
+        // Prefer prefix matches, then alphabetical
+        const aStarts = a.name.toLowerCase().startsWith(q) ? 0 : 1;
+        const bStarts = b.name.toLowerCase().startsWith(q) ? 0 : 1;
+        if (aStarts !== bStarts) return aStarts - bStarts;
+        return a.name.localeCompare(b.name);
+      })
+      .slice(0, 10);
+  }
+
+  function renderAC(matches) {
+    if (!matches.length) { closeAC(); return; }
+    acList.innerHTML = matches.map((m, i) =>
+      `<div class="ac-item${i === acIndex ? ' active' : ''}" data-name="${m.name}">${m.name}</div>`
+    ).join("");
+    acList.classList.add("open");
+  }
+
+  function closeAC() {
+    acList.classList.remove("open");
+    acList.innerHTML = "";
+    acIndex = -1;
+  }
+
+  function selectAC(name) {
+    input.value = name;
+    closeAC();
+  }
+
+  // ---- Event handlers ----
+  btn.addEventListener("click", submitGuess);
+
+  input.addEventListener("input", () => {
+    acIndex = -1;
+    const matches = getMatches(input.value.trim());
+    renderAC(matches);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    const items = acList.querySelectorAll(".ac-item");
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      acIndex = Math.min(acIndex + 1, items.length - 1);
+      items.forEach((el, i) => el.classList.toggle("active", i === acIndex));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      acIndex = Math.max(acIndex - 1, 0);
+      items.forEach((el, i) => el.classList.toggle("active", i === acIndex));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (acIndex >= 0 && items[acIndex]) {
+        selectAC(items[acIndex].dataset.name);
+      }
+      submitGuess();
+    } else if (e.key === "Escape") {
+      closeAC();
+    }
+  });
+
+  acList.addEventListener("mousedown", (e) => {
+    // mousedown instead of click so it fires before blur
+    const item = e.target.closest(".ac-item");
+    if (item) selectAC(item.dataset.name);
+  });
+
+  input.addEventListener("blur", () => {
+    // Delay close so mousedown on ac-item fires first
+    setTimeout(closeAC, 150);
+  });
+
+  nextBtn.addEventListener("click", newRound);
+})();
+</script>
+</body>
+</html>
