@@ -20,7 +20,7 @@ with open(CSV_PATH, newline="", encoding="utf-8") as f:
         if dir_path.is_dir():
             for entry in sorted(dir_path.iterdir()):
                 if entry.is_file() and entry.suffix.lower() in IMAGE_EXTS:
-                    images.append(f"/{image_dir}/{entry.name}")
+                    images.append(f"{image_dir}/{entry.name}")
 
         if not images:
             continue
