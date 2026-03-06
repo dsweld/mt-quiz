@@ -197,6 +197,7 @@
 <body>
 
 <h1>Washington Peak Quiz</h1>
+<h3>Bulgers, 400P and 5000' Prominence Peaks</h3>
 <div id="guess-counter">Guess 1 of 5</div>
 
 <div id="image-wrap">
@@ -260,7 +261,7 @@
     if (!from.lat || !from.lon || !to.lat || !to.lon) return "";
     const dist = haversine(from.lat, from.lon, to.lat, to.lon);
     const dir  = toCardinal(bearing(from.lat, from.lon, to.lat, to.lon));
-    return ` \u2014 ${Math.round(dist)} mi ${dir}`;
+    return `.  Try going ${Math.round(dist)} mi ${dir}`;
   }
 
   const img       = document.getElementById("mountain-img");
