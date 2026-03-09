@@ -18,50 +18,147 @@
   }
 
   h1 {
-    margin: 24px 0 8px;
+    margin: 24px 0 4px;
     font-size: 1.6rem;
     color: #a8d8ea;
     letter-spacing: 0.5px;
   }
+  h3 {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 16px;
+  }
 
+  /* ── Mode toggle ─────────────────────────────────────────────── */
+  #mode-wrap {
+    display: flex;
+    background: #0f0f23;
+    border: 1px solid #2a2a4a;
+    border-radius: 999px;
+    padding: 3px;
+    gap: 2px;
+    margin-bottom: 6px;
+  }
+  .mode-btn {
+    padding: 5px 24px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #555;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.18s;
+    letter-spacing: 0.02em;
+  }
+  .mode-btn.active { background: #a8d8ea; color: #1a1a2e; }
+  .mode-btn:not(.active):hover { color: #aaa; }
+
+  /* ── Day / counter labels ────────────────────────────────────── */
+  #day-label {
+    font-size: 0.82rem;
+    color: #555;
+    margin-bottom: 2px;
+    min-height: 1.1em;
+    letter-spacing: 0.04em;
+  }
   #guess-counter {
     font-size: 0.95rem;
     color: #888;
     margin-bottom: 12px;
   }
 
-  /* Image area */
+  /* ── Image area ──────────────────────────────────────────────── */
   #image-wrap {
     width: 90vw;
     max-width: 900px;
-    height: 60vh;
-    max-height: 600px;
+    height: 58vh;
+    max-height: 560px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #0f0f23;
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     border: 1px solid #2a2a4a;
   }
-
   #mountain-img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
   }
 
-  /* Input area */
+  /* ── Tile history ────────────────────────────────────────────── */
+  #history-wrap {
+    width: 90vw;
+    max-width: 520px;
+    margin-bottom: 10px;
+  }
+  #history-header {
+    display: none;   /* shown after first guess */
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #2a2a4a;
+    margin-bottom: 5px;
+  }
+  #history-header.visible { display: flex; }
+  .hdr-peak { flex: 1; font-size: 0.62rem; font-weight: 700; color: #444; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hdr-pair { display: flex; gap: 10px; flex-shrink: 0; }
+  .hdr-tile { width: 84px; text-align: center; font-size: 0.62rem; font-weight: 700; color: #444; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  #history { display: flex; flex-direction: column; gap: 5px; }
+
+  .tile-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tile-row-name {
+    flex: 1;
+    font-size: 0.88rem;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .tile-row-name.correct-name { color: #4ade80; font-weight: 600; }
+
+  /* Groups the two hint tiles so header/row columns stay in sync */
+  .tile-pair { display: flex; gap: 10px; flex-shrink: 0; }
+
+  .hint-tile {
+    width: 84px;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 3px;
+    user-select: none;
+  }
+  /* Rotatable SVG arrow — same visual weight in every direction */
+  .dir-arrow  { width: 22px; height: 22px; fill: currentColor; display: block; flex-shrink: 0; }
+  .tile-check { font-size: 1.5rem; line-height: 1; }
+  .tile-val   { font-size: 0.7rem; font-weight: 700; opacity: 0.92; letter-spacing: 0.01em; }
+
+  .hint-tile.green  { background: #15803d; color: #fff; }
+  .hint-tile.orange { background: #c2410c; color: #fff; }
+  .hint-tile.red    { background: #7f1d1d; color: #fff; }
+
+  /* ── Input area ──────────────────────────────────────────────── */
   #input-area {
     position: relative;
     width: 90vw;
     max-width: 500px;
     display: flex;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-
   #guess-input {
     flex: 1;
     padding: 10px 14px;
@@ -90,12 +187,12 @@
   #guess-btn:hover:not(:disabled) { background: #88c8da; }
   #guess-btn:disabled { opacity: 0.4; cursor: default; }
 
-  /* Autocomplete dropdown */
+  /* ── Autocomplete ────────────────────────────────────────────── */
   #ac-list {
     position: absolute;
     top: 100%;
     left: 0;
-    right: 68px; /* leave room for button */
+    right: 68px;
     background: #16213e;
     border: 1px solid #3a3a5a;
     border-top: none;
@@ -106,50 +203,24 @@
     display: none;
   }
   #ac-list.open { display: block; }
+  .ac-item { padding: 8px 14px; cursor: pointer; font-size: 0.95rem; }
+  .ac-item:hover, .ac-item.active { background: #2a3a5e; color: #fff; }
 
-  .ac-item {
-    padding: 8px 14px;
-    cursor: pointer;
-    font-size: 0.95rem;
-  }
-  .ac-item:hover, .ac-item.active {
-    background: #2a3a5e;
-    color: #fff;
-  }
-
-  /* Feedback area */
+  /* ── Feedback / result ───────────────────────────────────────── */
   #feedback {
     width: 90vw;
-    max-width: 600px;
+    max-width: 520px;
     text-align: center;
-    min-height: 60px;
-    margin-bottom: 12px;
-  }
-
-  .feedback-correct {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #4ade80;
-  }
-
-  .feedback-wrong {
-    font-size: 1.05rem;
-    color: #f87171;
+    min-height: 22px;
     margin-bottom: 4px;
-  }
-
-  .feedback-hint {
     font-size: 0.95rem;
-    color: #facc15;
+    color: #f87171;
   }
+  #result { text-align: center; margin-bottom: 8px; }
+  .feedback-correct { font-size: 1.25rem; font-weight: 700; color: #4ade80; }
+  .feedback-wrong   { font-size: 1rem; color: #f87171; }
 
-  /* Result line (Yes! / Out of guesses) — below input, above reveal */
-  #result {
-    text-align: center;
-    margin-bottom: 8px;
-  }
-
-  /* Reveal card */
+  /* ── Reveal card ─────────────────────────────────────────────── */
   #reveal {
     display: none;
     width: 90vw;
@@ -159,146 +230,305 @@
     border-radius: 12px;
     padding: 20px 28px;
     text-align: center;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
   }
   #reveal.show { display: block; }
   #reveal h2 { color: #a8d8ea; margin-bottom: 8px; font-size: 1.4rem; }
-  #reveal .stat { font-size: 1.05rem; margin: 4px 0; }
+  #reveal .stat { font-size: 1.0rem; margin: 4px 0; }
   #reveal .stat span { color: #a8d8ea; font-weight: 600; }
 
-  #next-btn {
+  #share-btn {
     margin-top: 16px;
-    padding: 10px 28px;
-    font-size: 1rem;
+    padding: 9px 24px;
+    font-size: 0.95rem;
     font-weight: 600;
-    border: none;
+    border: 2px solid #a8d8ea;
     border-radius: 8px;
-    background: #a8d8ea;
-    color: #1a1a2e;
+    background: transparent;
+    color: #a8d8ea;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.18s;
   }
-  #next-btn:hover { background: #88c8da; }
+  #share-btn:hover { background: #a8d8ea; color: #1a1a2e; }
 
-  /* Guess history */
-  #history {
-    width: 90vw;
-    max-width: 500px;
-    margin-bottom: 8px;
+  #share-msg {
+    min-height: 18px;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #4ade80;
   }
-  .history-item {
-    font-size: 0.9rem;
-    color: #888;
-    padding: 2px 0;
-  }
-  .history-item .x { color: #f87171; }
+
 </style>
 </head>
 <body>
 
 <h1>Washington Peak Quiz</h1>
 <h3>Bulgers, 400P and 5000' Prominence Peaks</h3>
+
+<div id="mode-wrap">
+  <button id="daily-btn"    class="mode-btn active">Daily</button>
+  <button id="practice-btn" class="mode-btn">Practice</button>
+</div>
+
+<div id="day-label"></div>
 <div id="guess-counter">Guess 1 of 5</div>
 
 <div id="image-wrap">
   <img id="mountain-img" src="" alt="Mystery mountain">
 </div>
 
-<div id="feedback"></div>
-<div id="history"></div>
+<div id="history-wrap">
+  <div id="history-header">
+    <span class="hdr-peak">Peak</span>
+    <div class="hdr-pair">
+      <span class="hdr-tile">Elevation</span>
+      <span class="hdr-tile">Distance</span>
+    </div>
+  </div>
+  <div id="history"></div>
+</div>
 
 <div id="input-area">
-  <input id="guess-input" type="text" placeholder="Type a mountain name..." autocomplete="off">
+  <input id="guess-input" type="text" placeholder="Type a mountain name…" autocomplete="off">
   <button id="guess-btn">Guess</button>
   <div id="ac-list"></div>
 </div>
 
+<div id="feedback"></div>
 <div id="result"></div>
 
 <div id="reveal">
   <h2 id="reveal-name"></h2>
-  <p class="stat">Elevation: <span id="reveal-elev"></span></p>
+  <p class="stat">Elevation:   <span id="reveal-elev"></span></p>
   <p class="stat">Prominence: <span id="reveal-prom"></span></p>
-  <button id="next-btn">Next Mountain</button>
+  <button id="share-btn">📋 Share Result</button>
+  <div id="share-msg"></div>
 </div>
 
 <script>
-(function() {
+(function () {
+  // ── Config ────────────────────────────────────────────────────────────────
   const MAX_GUESSES = 5;
-  let mountains = [];
-  let current = null;    // { name, elevation_ft, prominence_ft, lat, lon, images }
-  let guessNum = 0;
-  let done = false;
-  let acIndex = -1;      // active autocomplete index
+  const SITE_URL    = 'https://dsweld.github.io/mt-quiz/';
+  const LAUNCH_DATE = '2026-03-08';                // Day #1 anchor
 
-  // ---- Geo utilities ----
+  // ── State ─────────────────────────────────────────────────────────────────
+  let mountains    = [];
+  let current      = null;
+  let guessNum     = 0;
+  let done         = false;
+  let acIndex      = -1;
+  let guessHistory = [];  // [{name, elevDir, elevColor, elevFt, dir, dirColor, dist, correct}]
+  let mode         = 'daily';
+  let dayNumber    = 1;
+
+  // ── DOM ───────────────────────────────────────────────────────────────────
+  const img         = document.getElementById('mountain-img');
+  const input       = document.getElementById('guess-input');
+  const btn         = document.getElementById('guess-btn');
+  const acList      = document.getElementById('ac-list');
+  const feedback    = document.getElementById('feedback');
+  const historyEl   = document.getElementById('history');
+  const historyHdr  = document.getElementById('history-header');
+  const counter     = document.getElementById('guess-counter');
+  const result      = document.getElementById('result');
+  const reveal      = document.getElementById('reveal');
+  const revName     = document.getElementById('reveal-name');
+  const revElev     = document.getElementById('reveal-elev');
+  const revProm     = document.getElementById('reveal-prom');
+  const shareBtn    = document.getElementById('share-btn');
+  const shareMsg    = document.getElementById('share-msg');
+  const dayLabel    = document.getElementById('day-label');
+  const dailyBtn    = document.getElementById('daily-btn');
+  const practiceBtn = document.getElementById('practice-btn');
+
+  // ── Geo utilities ─────────────────────────────────────────────────────────
   const DEG2RAD = Math.PI / 180;
-  const R_MILES = 3958.8;  // Earth radius in miles
+  const R_MILES = 3958.8;
 
   function haversine(lat1, lon1, lat2, lon2) {
     const dLat = (lat2 - lat1) * DEG2RAD;
     const dLon = (lon2 - lon1) * DEG2RAD;
-    const a = Math.sin(dLat / 2) ** 2
-            + Math.cos(lat1 * DEG2RAD) * Math.cos(lat2 * DEG2RAD) * Math.sin(dLon / 2) ** 2;
-    return R_MILES * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const a = Math.sin(dLat/2)**2
+            + Math.cos(lat1*DEG2RAD) * Math.cos(lat2*DEG2RAD) * Math.sin(dLon/2)**2;
+    return R_MILES * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   }
 
   function bearing(lat1, lon1, lat2, lon2) {
     const dLon = (lon2 - lon1) * DEG2RAD;
     const y = Math.sin(dLon) * Math.cos(lat2 * DEG2RAD);
-    const x = Math.cos(lat1 * DEG2RAD) * Math.sin(lat2 * DEG2RAD)
-            - Math.sin(lat1 * DEG2RAD) * Math.cos(lat2 * DEG2RAD) * Math.cos(dLon);
+    const x = Math.cos(lat1*DEG2RAD)*Math.sin(lat2*DEG2RAD)
+            - Math.sin(lat1*DEG2RAD)*Math.cos(lat2*DEG2RAD)*Math.cos(dLon);
     return (Math.atan2(y, x) / DEG2RAD + 360) % 360;
   }
 
-  function toCardinal(deg) {
-    const dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-    return dirs[Math.round(deg / 45) % 8];
+  const CARDINALS = ['N','NE','E','SE','S','SW','W','NW'];
+  function toCardinal(deg) { return CARDINALS[Math.round(deg/45) % 8]; }
+
+  // Emoji-width arrows for share text (\uFE0F forces emoji presentation).
+  // All render at the same cell width as ✅, so columns stay aligned.
+  const DIR_EMOJI = {
+    N:  '\u2B06\uFE0F',  // ⬆️
+    NE: '\u2197\uFE0F',  // ↗️
+    E:  '\u27A1\uFE0F',  // ➡️
+    SE: '\u2198\uFE0F',  // ↘️
+    S:  '\u2B07\uFE0F',  // ⬇️
+    SW: '\u2199\uFE0F',  // ↙️
+    W:  '\u2B05\uFE0F',  // ⬅️
+    NW: '\u2196\uFE0F',  // ↖️
+  };
+
+  // Rotation angles for each compass direction (0° = up)
+  const DIR_DEG = { N:0, NE:45, E:90, SE:135, S:180, SW:225, W:270, NW:315 };
+
+  // Returns an inline SVG arrowhead rotated to the given angle.
+  // Single path → identical stroke weight in every direction.
+  function arrowSvg(deg) {
+    return `<svg class="dir-arrow" viewBox="0 0 24 24" style="transform:rotate(${deg}deg)">` +
+           `<path d="M12 2 L21 20 L12 14 L3 20 Z"/>` +
+           `</svg>`;
   }
 
-  function geoHint(from, to) {
-    // from = guessed mountain, to = answer
-    if (!from.lat || !from.lon || !to.lat || !to.lon) return "";
-    const dist = haversine(from.lat, from.lon, to.lat, to.lon);
-    const dir  = toCardinal(bearing(from.lat, from.lon, to.lat, to.lon));
-    return `.  Try going ${Math.round(dist)} mi ${dir}`;
+  // ── Colour helpers ────────────────────────────────────────────────────────
+  // Returns 'green' | 'orange' | 'red'
+  function elevColor(ansElev, guessElev) {
+    const d = Math.abs(ansElev - guessElev);
+    return d <= 100 ? 'green' : d <= 500 ? 'orange' : 'red';
+  }
+  function distColor(miles) {
+    // WA peaks are spread across the state; < 5 mi is genuinely close
+    return miles <= 5 ? 'green' : miles <= 25 ? 'orange' : 'red';
+  }
+  const COLOR_EMOJI = { green: '🟩', orange: '🟧', red: '🟥' };
+
+  // ── Daily-mode helpers ────────────────────────────────────────────────────
+  function getSeattleDateStr() {
+    // Always returns Pacific-time calendar date as 'YYYY-MM-DD'
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Los_Angeles'
+    }).format(new Date());
   }
 
-  const img       = document.getElementById("mountain-img");
-  const input     = document.getElementById("guess-input");
-  const btn       = document.getElementById("guess-btn");
-  const acList    = document.getElementById("ac-list");
-  const feedback  = document.getElementById("feedback");
-  const history   = document.getElementById("history");
-  const counter   = document.getElementById("guess-counter");
-  const result    = document.getElementById("result");
-  const reveal    = document.getElementById("reveal");
-  const revName   = document.getElementById("reveal-name");
-  const revElev   = document.getElementById("reveal-elev");
-  const revProm   = document.getElementById("reveal-prom");
-  const nextBtn   = document.getElementById("next-btn");
+  function calcDayNumber(dateStr) {
+    const [ty, tm, td] = dateStr.split('-').map(Number);
+    const [ey, em, ed] = LAUNCH_DATE.split('-').map(Number);
+    const todayUTC = Date.UTC(ty, tm-1, td);
+    const epochUTC = Date.UTC(ey, em-1, ed);
+    return Math.max(1, Math.round((todayUTC - epochUTC) / 86400000) + 1);
+  }
 
-  // ---- Data loading ----
-  fetch("data.json")
-    .then(r => r.json())
-    .then(data => { mountains = data; newRound(); })
-    .catch(e => { feedback.innerHTML = '<span class="feedback-wrong">Failed to load data.</span>'; });
+  function dailyMountainIndex(dateStr, n) {
+    // Deterministic hash: same date → same index for all visitors
+    let h = 0;
+    for (const c of dateStr) h = Math.imul(31, h) + c.charCodeAt(0) | 0;
+    h = Math.imul(h ^ (h >>> 16), 0x45d9f3b);
+    h = Math.imul(h ^ (h >>> 16), 0x45d9f3b);
+    return Math.abs(h ^ (h >>> 16)) % n;
+  }
 
-  // ---- Game logic ----
+  // ── Tile rendering ────────────────────────────────────────────────────────
+  function addTileRow(entry) {
+    // Show header on first guess
+    historyHdr.classList.add('visible');
+
+    const row = document.createElement('div');
+    row.className = 'tile-row';
+
+    if (entry.correct) {
+      row.innerHTML =
+        `<span class="tile-row-name correct-name">${entry.name}</span>` +
+        `<div class="tile-pair">` +
+          `<div class="hint-tile green"><span class="tile-check">✓</span></div>` +
+          `<div class="hint-tile green"><span class="tile-check">✓</span></div>` +
+        `</div>`;
+    } else {
+      const elevDeg = entry.elevDir === 'higher' ? 0 : 180;
+      const distDeg = DIR_DEG[entry.dir] ?? 0;
+      const distStr = entry.dist != null ? `${Math.round(entry.dist)} mi` : '? mi';
+      const elevStr = entry.elevFt != null ? `${entry.elevFt.toLocaleString()} ft` : '? ft';
+
+      row.innerHTML =
+        `<span class="tile-row-name">${entry.name}</span>` +
+        `<div class="tile-pair">` +
+          `<div class="hint-tile ${entry.elevColor}" title="${entry.elevDir === 'higher' ? 'Answer is higher' : 'Answer is lower'}">` +
+            `${arrowSvg(elevDeg)}` +
+            `<span class="tile-val">${elevStr}</span>` +
+          `</div>` +
+          `<div class="hint-tile ${entry.dirColor}" title="Answer is ~${distStr} ${entry.dir || '?'} of this peak">` +
+            `${arrowSvg(distDeg)}` +
+            `<span class="tile-val">${distStr}</span>` +
+          `</div>` +
+        `</div>`;
+    }
+    historyEl.appendChild(row);
+  }
+
+  // ── Share ─────────────────────────────────────────────────────────────────
+  function buildShareText() {
+    const won    = done && guessHistory.some(g => g.correct);
+    const score  = won ? `${guessHistory.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`;
+    const header = mode === 'daily'
+      ? `🏔️ WA Peak Quiz #${dayNumber}`
+      : `🏔️ WA Peak Quiz (Practice)`;
+
+    // One emoji-width character per tile = same width as ✅ = aligned columns.
+    // Both columns use FE0F directional arrows for consistent style.
+    const rows = guessHistory.map(g => {
+      if (g.correct) return '✅ ✅';
+      const ea = g.elevDir === 'higher' ? '\u2B06\uFE0F' : '\u2B07\uFE0F';
+      const da = DIR_EMOJI[g.dir] || '❓';
+      return `${ea} ${da}`;
+    });
+
+    return [header, score, '', ...rows, '', SITE_URL].join('\n');
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard?.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback for older browsers
+    const ta = Object.assign(document.createElement('textarea'), {
+      value: text,
+      style: 'position:fixed;opacity:0'
+    });
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+
+  // ── Game logic ────────────────────────────────────────────────────────────
   function newRound() {
-    current = mountains[Math.floor(Math.random() * mountains.length)];
+    if (!mountains.length) return;
+
+    if (mode === 'daily') {
+      const ds  = getSeattleDateStr();
+      dayNumber = calcDayNumber(ds);
+      current   = mountains[dailyMountainIndex(ds, mountains.length)];
+      dayLabel.textContent = `Daily #${dayNumber}`;
+    } else {
+      current = mountains[Math.floor(Math.random() * mountains.length)];
+      dayLabel.textContent = 'Practice Mode';
+    }
+
     const imgUrl = current.images[Math.floor(Math.random() * current.images.length)];
     img.src = encodeURI(imgUrl);
-    guessNum = 0;
-    done = false;
-    input.value = "";
+
+    guessNum     = 0;
+    done         = false;
+    guessHistory = [];
+    input.value  = '';
     input.disabled = false;
-    btn.disabled = false;
-    feedback.innerHTML = "";
-    history.innerHTML = "";
-    result.innerHTML = "";
-    reveal.classList.remove("show");
-    acList.classList.remove("open");
+    btn.disabled   = false;
+    feedback.textContent  = '';
+    historyEl.innerHTML   = '';
+    historyHdr.classList.remove('visible');
+    result.innerHTML      = '';
+    shareMsg.textContent  = '';
+    reveal.classList.remove('show');
+    acList.classList.remove('open');
     acIndex = -1;
     updateCounter();
     input.focus();
@@ -315,67 +545,79 @@
     const guess = input.value.trim();
     if (!guess) return;
 
-    // Find the guessed mountain in our data
-    const guessedMtn = mountains.find(m => m.name.toLowerCase() === guess.toLowerCase());
+    const guessedMtn = mountains.find(
+      m => m.name.toLowerCase() === guess.toLowerCase()
+    );
     if (!guessedMtn) {
-      feedback.innerHTML = '<span class="feedback-wrong">Pick a mountain from the list.</span>';
+      feedback.textContent = 'Pick a mountain from the list.';
       return;
     }
 
+    feedback.textContent = '';
     guessNum++;
     updateCounter();
-    input.value = "";
+    input.value = '';
     closeAC();
 
+    // ── Correct ──
     if (guessedMtn.name === current.name) {
-      // Correct!
       done = true;
-      feedback.innerHTML = "";
-      result.innerHTML = '<span class="feedback-correct">Yes!</span>';
+      const entry = { name: guessedMtn.name, correct: true };
+      guessHistory.push(entry);
+      addTileRow(entry);
+      result.innerHTML = '<span class="feedback-correct">⛰️ Correct!</span>';
       showReveal();
       return;
     }
 
-    // Wrong guess — build hint with elevation + distance/direction
-    const elevDir = current.elevation_ft > guessedMtn.elevation_ft ? "higher" : "lower";
-    const geo = geoHint(guessedMtn, current);
-    const hint = `The true summit is <strong>${elevDir}</strong> than ${guessedMtn.name} (${guessedMtn.elevation_ft.toLocaleString()} ft)${geo}`;
-    feedback.innerHTML = `<div class="feedback-wrong">No!</div><div class="feedback-hint">${hint}</div>`;
+    // ── Wrong ──
+    const elevDir  = current.elevation_ft > guessedMtn.elevation_ft ? 'higher' : 'lower';
+    const elevCol  = elevColor(current.elevation_ft, guessedMtn.elevation_ft);
+    const elevFt   = guessedMtn.elevation_ft;
 
-    // Add to history
-    const tooDir = elevDir === "higher" ? "too low" : "too high";
-    const histGeo = geo ? ` ${geo.trim()}` : "";
-    history.innerHTML += `<div class="history-item"><span class="x">&#10007;</span> ${guessedMtn.name} (${guessedMtn.elevation_ft.toLocaleString()} ft) – ${tooDir}${histGeo}</div>`;
+    let dir = null, dirCol = 'red', dist = null;
+    if (guessedMtn.lat && guessedMtn.lon && current.lat && current.lon) {
+      dist   = haversine(guessedMtn.lat, guessedMtn.lon, current.lat, current.lon);
+      dir    = toCardinal(bearing(guessedMtn.lat, guessedMtn.lon, current.lat, current.lon));
+      dirCol = distColor(dist);
+    }
+
+    const entry = {
+      name: guessedMtn.name,
+      elevDir, elevColor: elevCol, elevFt,
+      dir: dir || '?', dirColor: dirCol, dist,
+      correct: false
+    };
+    guessHistory.push(entry);
+    addTileRow(entry);
 
     if (guessNum >= MAX_GUESSES) {
       done = true;
-      feedback.innerHTML = "";
-      result.innerHTML = `<div class="feedback-wrong">Out of guesses!</div>`;
+      result.innerHTML =
+        `<span class="feedback-wrong">Out of guesses — it was <strong>${current.name}</strong>.</span>`;
       showReveal();
     }
   }
 
   function showReveal() {
     input.disabled = true;
-    btn.disabled = true;
+    btn.disabled   = true;
     revName.textContent = current.name;
-    revElev.textContent = current.elevation_ft.toLocaleString() + " ft";
-    revProm.textContent = current.prominence_ft.toLocaleString() + " ft";
-    reveal.classList.add("show");
+    revElev.textContent = current.elevation_ft.toLocaleString() + ' ft';
+    revProm.textContent = current.prominence_ft.toLocaleString() + ' ft';
+    reveal.classList.add('show');
   }
 
-  // ---- Autocomplete ----
+  // ── Autocomplete ──────────────────────────────────────────────────────────
   function getMatches(query) {
     if (!query) return [];
     const q = query.toLowerCase();
     return mountains
       .filter(m => m.name.toLowerCase().includes(q))
       .sort((a, b) => {
-        // Prefer prefix matches, then alphabetical
-        const aStarts = a.name.toLowerCase().startsWith(q) ? 0 : 1;
-        const bStarts = b.name.toLowerCase().startsWith(q) ? 0 : 1;
-        if (aStarts !== bStarts) return aStarts - bStarts;
-        return a.name.localeCompare(b.name);
+        const as = a.name.toLowerCase().startsWith(q) ? 0 : 1;
+        const bs = b.name.toLowerCase().startsWith(q) ? 0 : 1;
+        return as !== bs ? as - bs : a.name.localeCompare(b.name);
       })
       .slice(0, 10);
   }
@@ -384,63 +626,84 @@
     if (!matches.length) { closeAC(); return; }
     acList.innerHTML = matches.map((m, i) =>
       `<div class="ac-item${i === acIndex ? ' active' : ''}" data-name="${m.name}">${m.name}</div>`
-    ).join("");
-    acList.classList.add("open");
+    ).join('');
+    acList.classList.add('open');
   }
 
   function closeAC() {
-    acList.classList.remove("open");
-    acList.innerHTML = "";
+    acList.classList.remove('open');
+    acList.innerHTML = '';
     acIndex = -1;
   }
+  function selectAC(name) { input.value = name; closeAC(); }
 
-  function selectAC(name) {
-    input.value = name;
-    closeAC();
-  }
+  // ── Event handlers ────────────────────────────────────────────────────────
+  btn.addEventListener('click', submitGuess);
 
-  // ---- Event handlers ----
-  btn.addEventListener("click", submitGuess);
-
-  input.addEventListener("input", () => {
+  input.addEventListener('input', () => {
     acIndex = -1;
-    const matches = getMatches(input.value.trim());
-    renderAC(matches);
+    renderAC(getMatches(input.value.trim()));
   });
 
-  input.addEventListener("keydown", (e) => {
-    const items = acList.querySelectorAll(".ac-item");
-    if (e.key === "ArrowDown") {
+  input.addEventListener('keydown', e => {
+    const items = acList.querySelectorAll('.ac-item');
+    if (e.key === 'ArrowDown') {
       e.preventDefault();
       acIndex = Math.min(acIndex + 1, items.length - 1);
-      items.forEach((el, i) => el.classList.toggle("active", i === acIndex));
-    } else if (e.key === "ArrowUp") {
+      items.forEach((el, i) => el.classList.toggle('active', i === acIndex));
+    } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       acIndex = Math.max(acIndex - 1, 0);
-      items.forEach((el, i) => el.classList.toggle("active", i === acIndex));
-    } else if (e.key === "Enter") {
+      items.forEach((el, i) => el.classList.toggle('active', i === acIndex));
+    } else if (e.key === 'Enter') {
       e.preventDefault();
-      if (acIndex >= 0 && items[acIndex]) {
-        selectAC(items[acIndex].dataset.name);
-      }
+      if (acIndex >= 0 && items[acIndex]) selectAC(items[acIndex].dataset.name);
       submitGuess();
-    } else if (e.key === "Escape") {
+    } else if (e.key === 'Escape') {
       closeAC();
     }
   });
 
-  acList.addEventListener("mousedown", (e) => {
-    // mousedown instead of click so it fires before blur
-    const item = e.target.closest(".ac-item");
+  acList.addEventListener('mousedown', e => {
+    const item = e.target.closest('.ac-item');
     if (item) selectAC(item.dataset.name);
   });
 
-  input.addEventListener("blur", () => {
-    // Delay close so mousedown on ac-item fires first
-    setTimeout(closeAC, 150);
+  input.addEventListener('blur', () => setTimeout(closeAC, 150));
+
+  shareBtn.addEventListener('click', () => {
+    copyToClipboard(buildShareText())
+      .then(() => {
+        shareMsg.textContent = '✓ Copied to clipboard!';
+        setTimeout(() => { shareMsg.textContent = ''; }, 2500);
+      })
+      .catch(() => {
+        shareMsg.textContent = 'Could not copy — try manually selecting.';
+      });
   });
 
-  nextBtn.addEventListener("click", newRound);
+  dailyBtn.addEventListener('click', () => {
+    if (mode === 'daily') return;
+    mode = 'daily';
+    dailyBtn.classList.add('active');
+    practiceBtn.classList.remove('active');
+    newRound();
+  });
+
+  practiceBtn.addEventListener('click', () => {
+    // Always start a fresh random round — doubles as "play again" after game ends
+    mode = 'practice';
+    practiceBtn.classList.add('active');
+    dailyBtn.classList.remove('active');
+    newRound();
+  });
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
+  fetch('data.json')
+    .then(r => r.json())
+    .then(data => { mountains = data; newRound(); })
+    .catch(() => { feedback.textContent = 'Failed to load data.'; });
+
 })();
 </script>
 </body>
