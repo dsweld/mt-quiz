@@ -258,6 +258,19 @@
     color: #4ade80;
   }
 
+  #practice-prompt {
+    margin-top: 20px;
+    font-size: 0.85rem;
+  }
+  #practice-prompt a {
+    color: #888;
+    text-decoration: none;
+  }
+  #practice-prompt a:hover {
+    color: #a8d8ea;
+    text-decoration: underline;
+  }
+
 </style>
 </head>
 <body>
@@ -303,6 +316,9 @@
   <p class="stat">Prominence: <span id="reveal-prom"></span></p>
   <button id="share-btn">📋 Share Result</button>
   <div id="share-msg"></div>
+  <div id="practice-prompt" style="display:none">
+    <a href="#" id="practice-link">Try a bonus quiz?</a>
+  </div>
 </div>
 
 <script>
@@ -321,6 +337,7 @@
   let guessHistory = [];  // [{name, elevDir, elevColor, elevFt, dir, dirColor, dist, correct}]
   let mode         = 'daily';
   let dayNumber    = 1;
+  let currentImgIndex = 0;
 
   // ── DOM ───────────────────────────────────────────────────────────────────
   const img         = document.getElementById('mountain-img');
@@ -340,7 +357,9 @@
   const shareMsg    = document.getElementById('share-msg');
   const dayLabel    = document.getElementById('day-label');
   const dailyBtn    = document.getElementById('daily-btn');
-  const practiceBtn = document.getElementById('practice-btn');
+  const practiceBtn    = document.getElementById('practice-btn');
+  const practicePrompt = document.getElementById('practice-prompt');
+  const practiceLink   = document.getElementById('practice-link');
 
   // ── Geo utilities ─────────────────────────────────────────────────────────
   const DEG2RAD = Math.PI / 180;
@@ -480,7 +499,13 @@
       return `${ea} ${da}`;
     });
 
-    return [header, score, '', ...rows, '', SITE_URL].join('\n');
+    let url = SITE_URL;
+    if (mode === 'practice') {
+      const mi = mountains.indexOf(current);
+      url = `${SITE_URL}?p=${mi}&img=${currentImgIndex}`;
+    }
+
+    return [header, score, '', ...rows, '', url].join('\n');
   }
 
   function copyToClipboard(text) {
@@ -513,8 +538,8 @@
       dayLabel.textContent = 'Practice Mode';
     }
 
-    const imgUrl = current.images[Math.floor(Math.random() * current.images.length)];
-    img.src = encodeURI(imgUrl);
+    currentImgIndex = Math.floor(Math.random() * current.images.length);
+    img.src = encodeURI(current.images[currentImgIndex]);
 
     guessNum     = 0;
     done         = false;
@@ -522,11 +547,13 @@
     input.value  = '';
     input.disabled = false;
     btn.disabled   = false;
+    document.getElementById('input-area').style.display = '';
     feedback.textContent  = '';
     historyEl.innerHTML   = '';
     historyHdr.classList.remove('visible');
     result.innerHTML      = '';
     shareMsg.textContent  = '';
+    practicePrompt.style.display = 'none';
     reveal.classList.remove('show');
     acList.classList.remove('open');
     acIndex = -1;
@@ -567,6 +594,7 @@
       addTileRow(entry);
       result.innerHTML = '<span class="feedback-correct">⛰️ Correct!</span>';
       showReveal();
+      if (mode === 'daily') practicePrompt.style.display = '';
       return;
     }
 
@@ -600,8 +628,7 @@
   }
 
   function showReveal() {
-    input.disabled = true;
-    btn.disabled   = true;
+    document.getElementById('input-area').style.display = 'none';
     revName.textContent = current.name;
     revElev.textContent = current.elevation_ft.toLocaleString() + ' ft';
     revProm.textContent = current.prominence_ft.toLocaleString() + ' ft';
@@ -698,10 +725,37 @@
     newRound();
   });
 
+  practiceLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    mode = 'practice';
+    practiceBtn.classList.add('active');
+    dailyBtn.classList.remove('active');
+    newRound();
+  });
+
   // ── Boot ──────────────────────────────────────────────────────────────────
   fetch('data.json')
     .then(r => r.json())
-    .then(data => { mountains = data; newRound(); })
+    .then(data => {
+      mountains = data;
+      const params = new URLSearchParams(window.location.search);
+      const pi = params.get('p');
+      const ii = params.get('img');
+      if (pi !== null && mountains[+pi]) {
+        // Deep-link into a specific practice quiz
+        mode = 'practice';
+        practiceBtn.classList.add('active');
+        dailyBtn.classList.remove('active');
+        current = mountains[+pi];
+        currentImgIndex = (ii !== null && current.images[+ii]) ? +ii : 0;
+        img.src = encodeURI(current.images[currentImgIndex]);
+        dayLabel.textContent = 'Practice Mode';
+        updateCounter();
+        history.replaceState(null, '', window.location.pathname);
+      } else {
+        newRound();
+      }
+    })
     .catch(() => { feedback.textContent = 'Failed to load data.'; });
 
 })();
