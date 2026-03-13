@@ -75,8 +75,8 @@
     "name": "Big Snagtooth",
     "elevation_ft": 8330,
     "prominence_ft": 570,
-    "lat": 48.3051,
-    "lon": -120.9892,
+    "lat": 48.533,
+    "lon": -120.5874,
     "images": [
       "images/Big Snagtooth/38565.jpg"
     ]
@@ -526,6 +526,7 @@
     "lat": 48.76846,
     "lon": -121.85842,
     "images": [
+      "images/Lincoln Peak/12445.jpg",
       "images/Lincoln Peak/41a48ddd-3dfa-4789-8e66-f52731dcca02.jpeg",
       "images/Lincoln Peak/Lincoln_Peak_21848.JPG",
       "images/Lincoln Peak/p5965L.jpg"
@@ -827,8 +828,11 @@
       "images/Mt. Rainier/104072.jpg",
       "images/Mt. Rainier/Mount_Rainier_22925.JPG",
       "images/Mt. Rainier/Mount_Rainier_5845s.JPG",
+      "images/Mt. Rainier/Mount_Rainier_over_Tacoma.jpg",
       "images/Mt. Rainier/Mount_Rainier_summit_July_2024.jpeg",
+      "images/Mt. Rainier/Mount_Rainier_sunset.jpg",
       "images/Mt. Rainier/Nisqually_Glacier_0902.JPG",
+      "images/Mt. Rainier/Rainier20200906.jpg",
       "images/Mt. Rainier/Rainier_Aerial_West_Close_Washington_Mar23_R16_07149.jpg"
     ]
   },
