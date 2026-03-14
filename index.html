@@ -532,13 +532,13 @@
       const ds  = getSeattleDateStr();
       dayNumber = calcDayNumber(ds);
       current   = mountains[dailyMountainIndex(ds, mountains.length)];
+      currentImgIndex = dailyMountainIndex(ds + '-img', current.images.length);
       dayLabel.textContent = `Daily #${dayNumber}`;
     } else {
       current = mountains[Math.floor(Math.random() * mountains.length)];
+      currentImgIndex = Math.floor(Math.random() * current.images.length);
       dayLabel.textContent = 'Practice Mode';
     }
-
-    currentImgIndex = Math.floor(Math.random() * current.images.length);
     img.src = encodeURI(current.images[currentImgIndex]);
 
     guessNum     = 0;
