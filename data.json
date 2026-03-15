@@ -48,6 +48,7 @@
     "lon": -121.10151,
     "images": [
       "images/Austera Peak/69802.jpg",
+      "images/Austera Peak/DSC08068.jpg",
       "images/Austera Peak/Primus_and_Austera.jpg"
     ]
   },
@@ -75,8 +76,8 @@
     "name": "Big Snagtooth",
     "elevation_ft": 8330,
     "prominence_ft": 570,
-    "lat": 48.533,
-    "lon": -120.5874,
+    "lat": 48.5342,
+    "lon": -120.5884,
     "images": [
       "images/Big Snagtooth/38565.jpg"
     ]
@@ -88,7 +89,8 @@
     "lat": 48.5236,
     "lon": -120.8162,
     "images": [
-      "images/Black Peak/130183.JPG"
+      "images/Black Peak/130183.JPG",
+      "images/Black Peak/IMG_5241.jpg"
     ]
   },
   {
@@ -110,7 +112,10 @@
     "images": [
       "images/Bonanza Peak/146963.jpg",
       "images/Bonanza Peak/18631194945_5bf9f6ebf4_b.jpg",
-      "images/Bonanza Peak/Bonanza_Peak_Washington.jpg"
+      "images/Bonanza Peak/Bonanza_Peak_Washington.jpg",
+      "images/Bonanza Peak/DSC08377.jpg",
+      "images/Bonanza Peak/IMG_3481 copy.jpg",
+      "images/Bonanza Peak/IMG_3487.jpg"
     ]
   },
   {
@@ -121,7 +126,9 @@
     "lon": -121.036,
     "images": [
       "images/Boston Peak/125709.jpg",
-      "images/Boston Peak/Boston_Peak_North_Cascades_1991.jpg"
+      "images/Boston Peak/Boston_Peak_North_Cascades_1991.jpg",
+      "images/Boston Peak/DSC04649.jpg",
+      "images/Boston Peak/IMG_8717.jpg"
     ]
   },
   {
@@ -207,6 +214,7 @@
     "lon": -120.96861,
     "images": [
       "images/Clark Mountain/26743.jpg",
+      "images/Clark Mountain/DSC08561.jpg",
       "images/Clark Mountain/p3487L.jpg"
     ]
   },
@@ -217,7 +225,8 @@
     "lat": 47.47824,
     "lon": -120.84634,
     "images": [
-      "images/Colchuck Peak/13681.JPG"
+      "images/Colchuck Peak/13681.JPG",
+      "images/Colchuck Peak/argonaut-06 021.jpg"
     ]
   },
   {
@@ -242,6 +251,19 @@
     ]
   },
   {
+    "name": "Cosho Peak",
+    "elevation_ft": 8338,
+    "prominence_ft": 517,
+    "lat": 48.588914,
+    "lon": -120.927825,
+    "images": [
+      "images/Cosho Peak/5288.jpg",
+      "images/Cosho Peak/Screenshot 2026-03-05 at 7.13.40\u202fPM.png",
+      "images/Cosho Peak/Screenshot 2026-03-05 at 7.14.37\u202fPM.png",
+      "images/Cosho Peak/p9487L.jpg"
+    ]
+  },
+  {
     "name": "Courtney Peak",
     "elevation_ft": 8392,
     "prominence_ft": 792,
@@ -259,7 +281,8 @@
     "lon": -120.88167,
     "images": [
       "images/Dark Peak/108077.jpg",
-      "images/Dark Peak/18603605776_1ce8a490c6_b.jpg"
+      "images/Dark Peak/18603605776_1ce8a490c6_b.jpg",
+      "images/Dark Peak/IMG_9475.jpg"
     ]
   },
   {
@@ -269,7 +292,8 @@
     "lat": 48.2768,
     "lon": -120.7653,
     "images": [
-      "images/Devore Peak/124996.jpg"
+      "images/Devore Peak/124996.jpg",
+      "images/Devore Peak/IMG_3481.jpg"
     ]
   },
   {
@@ -280,7 +304,12 @@
     "lon": -121.0295,
     "images": [
       "images/Dome Peak/18492027629_a367fde683_b.jpg",
-      "images/Dome Peak/513.jpg"
+      "images/Dome Peak/513.jpg",
+      "images/Dome Peak/DSC00565.jpg",
+      "images/Dome Peak/DSC07933.jpg",
+      "images/Dome Peak/DSC08603 copy.jpg",
+      "images/Dome Peak/IMG_2897.jpg",
+      "images/Dome Peak/IMG_2907.jpg"
     ]
   },
   {
@@ -300,7 +329,10 @@
     "lat": 47.4789,
     "lon": -120.8332,
     "images": [
-      "images/Dragontail Peak/19843.jpg"
+      "images/Dragontail Peak/19843.jpg",
+      "images/Dragontail Peak/4Z9A8182.jpg",
+      "images/Dragontail Peak/4Z9A8185.jpg",
+      "images/Dragontail Peak/argonaut-06 021 copy.jpg"
     ]
   },
   {
@@ -322,6 +354,8 @@
     "images": [
       "images/Eldorado Peak/49585.jpg",
       "images/Eldorado Peak/960px-Eldorado_Peak_from_Klawatti.jpg",
+      "images/Eldorado Peak/DSC08016.jpg",
+      "images/Eldorado Peak/DSC08092.jpg",
       "images/Eldorado Peak/Eldorado_Peak.jpg",
       "images/Eldorado Peak/Eldorado_Peak_with_long_lens.jpg"
     ]
@@ -364,7 +398,12 @@
     "lat": 48.51166,
     "lon": -121.05839,
     "images": [
-      "images/Forbidden Peak/68004.jpg"
+      "images/Forbidden Peak/68004.jpg",
+      "images/Forbidden Peak/DSC04673.jpg",
+      "images/Forbidden Peak/DSC04721.jpg",
+      "images/Forbidden Peak/DSC07909.jpg",
+      "images/Forbidden Peak/DSC08075.jpg",
+      "images/Forbidden Peak/DSC08099.jpg"
     ]
   },
   {
@@ -395,6 +434,10 @@
     "lon": -121.1138,
     "images": [
       "images/Glacier Peak/128759.jpg",
+      "images/Glacier Peak/DSC00951.jpg",
+      "images/Glacier Peak/DSC07948.jpg",
+      "images/Glacier Peak/DSC08095.jpg",
+      "images/Glacier Peak/DSC08564.jpg",
       "images/Glacier Peak/Glacier_Peak_7118.jpeg",
       "images/Glacier Peak/Glacier_Peak_7137b.jpg",
       "images/Glacier Peak/N2_Glacier_Peak.jpg"
@@ -418,7 +461,11 @@
     "lon": -120.9115,
     "images": [
       "images/Goode Mountain/18490506850_47dc52688c_b.jpg",
-      "images/Goode Mountain/40873.jpg"
+      "images/Goode Mountain/40873.jpg",
+      "images/Goode Mountain/DSC02406.jpg",
+      "images/Goode Mountain/IMG_2902.jpg",
+      "images/Goode Mountain/IMG_8717 copy.jpg",
+      "images/Goode Mountain/birthdays07 031.jpg"
     ]
   },
   {
@@ -461,7 +508,11 @@
     "lon": -120.9562,
     "images": [
       "images/Jack Mountain/1280px-Jack_Mountain_North_Cascades.jpg",
+      "images/Jack Mountain/1990-91_Trinity, Silver Star, Dragon Tail, etc._037.jpg",
       "images/Jack Mountain/84325.jpg",
+      "images/Jack Mountain/DSC03259.jpg",
+      "images/Jack Mountain/DSC03261.jpg",
+      "images/Jack Mountain/DSC04673 copy.jpg",
       "images/Jack Mountain/Jack_Mountain.jpg",
       "images/Jack Mountain/Jack_Mountain_from_Diablo_Lake_Vista_Point.jpg"
     ]
@@ -483,7 +534,8 @@
     "lat": 48.58527,
     "lon": -120.91036,
     "images": [
-      "images/Kimtah Peak/187160.jpg"
+      "images/Kimtah Peak/187160.jpg",
+      "images/Kimtah Peak/4823000-R1-E008 copy.jpg"
     ]
   },
   {
@@ -493,7 +545,8 @@
     "lat": 48.55429,
     "lon": -121.10428,
     "images": [
-      "images/Klawatti Peak/66672.jpg"
+      "images/Klawatti Peak/66672.jpg",
+      "images/Klawatti Peak/IMG_2175.jpg"
     ]
   },
   {
@@ -528,6 +581,8 @@
     "images": [
       "images/Lincoln Peak/12445.jpg",
       "images/Lincoln Peak/41a48ddd-3dfa-4789-8e66-f52731dcca02.jpeg",
+      "images/Lincoln Peak/DSC01120.jpg",
+      "images/Lincoln Peak/DSC01133.jpg",
       "images/Lincoln Peak/Lincoln_Peak_21848.JPG",
       "images/Lincoln Peak/p5965L.jpg"
     ]
@@ -549,6 +604,8 @@
     "lat": 46.8495,
     "lon": -121.71185,
     "images": [
+      "images/Little Tahoma/4Z9A8266.jpg",
+      "images/Little Tahoma/4Z9A8309.jpg",
       "images/Little Tahoma/58098.jpg"
     ]
   },
@@ -633,7 +690,8 @@
     "lat": 48.7939,
     "lon": -120.54349,
     "images": [
-      "images/Monument Peak/17502.jpg"
+      "images/Monument Peak/17502.jpg",
+      "images/Monument Peak/IMG_2371.jpg"
     ]
   },
   {
@@ -643,6 +701,9 @@
     "lat": 48.9138,
     "lon": -121.2948,
     "images": [
+      "images/Mox Peaks,NW Spire/DSC03203.jpg",
+      "images/Mox Peaks,NW Spire/DSC03217 copy.jpg",
+      "images/Mox Peaks,NW Spire/IMG_4279 copy.jpg",
       "images/Mox Peaks,NW Spire/Screenshot 2026-02-28 at 11.35.20\u202fAM.png",
       "images/Mox Peaks,NW Spire/Screenshot 2026-02-28 at 11.35.44\u202fAM.png"
     ]
@@ -654,6 +715,8 @@
     "lat": 48.9103,
     "lon": -121.29,
     "images": [
+      "images/Mox Peaks,SE Spire/DSC03238.jpg",
+      "images/Mox Peaks,SE Spire/IMG_4279.jpg",
       "images/Mox Peaks,SE Spire/Screenshot 2026-02-28 at 11.35.44\u202fAM copy.png",
       "images/Mox Peaks,SE Spire/Screenshot 2026-02-28 at 11.37.56\u202fAM.png",
       "images/Mox Peaks,SE Spire/Screenshot 2026-02-28 at 11.38.23\u202fAM copy.png"
@@ -666,6 +729,7 @@
     "lat": 46.2024,
     "lon": -121.49095,
     "images": [
+      "images/Mt. Adams/4Z9A8300.jpg",
       "images/Mt. Adams/71084.jpg",
       "images/Mt. Adams/Meadows_at_Mount_Adams_Wilderness_03.JPG",
       "images/Mt. Adams/Mount_Adams_(Washington)_from_Devils_Garden.JPG",
@@ -685,7 +749,10 @@
     "images": [
       "images/Mt. Baker/18678219025_dd916c786b_b.jpg",
       "images/Mt. Baker/253.jpg",
+      "images/Mt. Baker/4Z9A0619.jpg",
       "images/Mt. Baker/Boulder_Glacier_3737.jpeg",
+      "images/Mt. Baker/DSC04557.jpg",
+      "images/Mt. Baker/DSC06783.jpg",
       "images/Mt. Baker/Mount_Baker.jpg",
       "images/Mt. Baker/Mount_Baker_22181.JPG",
       "images/Mt. Baker/Mount_Baker_from_Boulder_Creek.jpg"
@@ -721,6 +788,7 @@
       "images/Mt. Buckner/18492023679_8619ac5999_b.jpg",
       "images/Mt. Buckner/49577.jpg",
       "images/Mt. Buckner/Buckner_in_Cascades.jpg",
+      "images/Mt. Buckner/IMG_8717 copy 2.jpg",
       "images/Mt. Buckner/Mount_Buckner.jpeg",
       "images/Mt. Buckner/North_face_of_Buckner_from_the_Boston_Glacier.jpg"
     ]
@@ -763,7 +831,9 @@
     "lon": -121.06733,
     "images": [
       "images/Mt. Formidable/136745.JPG",
-      "images/Mt. Formidable/18182482158_01d323d4a1_b.jpg"
+      "images/Mt. Formidable/18182482158_01d323d4a1_b.jpg",
+      "images/Mt. Formidable/IMG_2811-Edit.jpg",
+      "images/Mt. Formidable/IMG_3101.jpg"
     ]
   },
   {
@@ -826,6 +896,7 @@
     "lon": -121.75752,
     "images": [
       "images/Mt. Rainier/104072.jpg",
+      "images/Mt. Rainier/4Z9A8308.jpg",
       "images/Mt. Rainier/Mount_Rainier_22925.JPG",
       "images/Mt. Rainier/Mount_Rainier_5845s.JPG",
       "images/Mt. Rainier/Mount_Rainier_over_Tacoma.jpg",
@@ -843,7 +914,9 @@
     "lat": 48.95783,
     "lon": -121.30078,
     "images": [
-      "images/Mt. Redoubt/120628.jpg"
+      "images/Mt. Redoubt/120628.jpg",
+      "images/Mt. Redoubt/DSC03185.jpg",
+      "images/Mt. Redoubt/DSC03217.jpg"
     ]
   },
   {
@@ -853,7 +926,10 @@
     "lat": 48.83124,
     "lon": -121.60268,
     "images": [
-      "images/Mt. Shuksan/11251.jpg"
+      "images/Mt. Shuksan/11251.jpg",
+      "images/Mt. Shuksan/1990-91_Trinity, Silver Star, Dragon Tail, etc._122.jpg",
+      "images/Mt. Shuksan/4Z9A0514.jpg",
+      "images/Mt. Shuksan/DSC05233.jpg"
     ]
   },
   {
@@ -874,7 +950,8 @@
     "lat": 46.19139,
     "lon": -122.19553,
     "images": [
-      "images/Mt. St. Helens/37077.jpg"
+      "images/Mt. St. Helens/37077.jpg",
+      "images/Mt. St. Helens/4Z9A8233.jpg"
     ]
   },
   {
@@ -884,6 +961,8 @@
     "lat": 47.47515,
     "lon": -120.90199,
     "images": [
+      "images/Mt. Stuart/4Z9A8179.jpg",
+      "images/Mt. Stuart/4Z9A8198.jpg",
       "images/Mt. Stuart/52192.jpg",
       "images/Mt. Stuart/Mount_Stuart.jpg"
     ]
@@ -935,7 +1014,9 @@
     "lat": 48.58207,
     "lon": -121.09123,
     "images": [
-      "images/Primus Peak/85631.jpg"
+      "images/Primus Peak/85631.jpg",
+      "images/Primus Peak/DSC08037.jpg",
+      "images/Primus Peak/IMG_4090.jpg"
     ]
   },
   {
@@ -995,7 +1076,10 @@
     "lat": 48.49141,
     "lon": -121.03839,
     "images": [
-      "images/Sahale Mountain/261.jpg"
+      "images/Sahale Mountain/261.jpg",
+      "images/Sahale Mountain/DSC04645.jpg",
+      "images/Sahale Mountain/IMG_2788.jpg",
+      "images/Sahale Mountain/IMG_3142.jpg"
     ]
   },
   {
@@ -1045,7 +1129,8 @@
     "lat": 48.5479,
     "lon": -120.5851,
     "images": [
-      "images/Silver Star Mountain/27114.jpg"
+      "images/Silver Star Mountain/27114.jpg",
+      "images/Silver Star Mountain/DSC03593.jpg"
     ]
   },
   {
@@ -1055,6 +1140,8 @@
     "lat": 48.29984,
     "lon": -121.00962,
     "images": [
+      "images/Sinister Peak/DSC08603.jpg",
+      "images/Sinister Peak/IMG_2897 copy.jpg",
       "images/Sinister Peak/Telephoto_of_Sinister_Peak.jpg"
     ]
   },
@@ -1095,7 +1182,8 @@
     "lat": 48.49159,
     "lon": -120.92286,
     "images": [
-      "images/Storm King/187169.jpg"
+      "images/Storm King/187169.jpg",
+      "images/Storm King/birthdays07 031 copy.jpg"
     ]
   },
   {
@@ -1125,7 +1213,8 @@
     "lat": 48.29708,
     "lon": -120.75038,
     "images": [
-      "images/Tupshin Peak/109860.jpg"
+      "images/Tupshin Peak/109860.jpg",
+      "images/Tupshin Peak/IMG_3517.jpg"
     ]
   },
   {
