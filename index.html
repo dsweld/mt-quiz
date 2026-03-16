@@ -271,6 +271,24 @@
     text-decoration: underline;
   }
 
+  /* ── Footer ──────────────────────────────────────────────────── */
+  footer {
+    margin-top: auto;
+    padding: 24px 16px 14px;
+    font-size: 0.78rem;
+    color: #444;
+    text-align: center;
+    line-height: 1.5;
+  }
+  footer a {
+    color: #666;
+    text-decoration: none;
+  }
+  footer a:hover {
+    color: #a8d8ea;
+    text-decoration: underline;
+  }
+
 </style>
 </head>
 <body>
@@ -320,6 +338,11 @@
     <a href="#" id="practice-link">Try a bonus quiz?</a>
   </div>
 </div>
+
+<footer>
+  Created by Dan Weld. Report bugs, submit photos, or request removal of photos
+  <a id="contact-link" href="#">here</a>.
+</footer>
 
 <script>
 (function () {
@@ -757,6 +780,18 @@
       }
     })
     .catch(() => { feedback.textContent = 'Failed to load data.'; });
+
+  // ── Footer email (anti-crawler) ───────────────────────────────────────
+  (function () {
+    const u = 'mt-quiz', d = 'danweld', t = 'com';
+    const addr = u + '@' + d + '.' + t;
+    const link = document.getElementById('contact-link');
+    link.textContent = 'here';
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = 'mai' + 'lto:' + addr;
+    });
+  })();
 
 })();
 </script>
