@@ -784,13 +784,8 @@
   // ── Footer email (anti-crawler) ───────────────────────────────────────
   (function () {
     const u = 'mt-quiz', d = 'danweld', t = 'com';
-    const addr = u + '@' + d + '.' + t;
     const link = document.getElementById('contact-link');
-    link.textContent = 'here';
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.location.href = 'mai' + 'lto:' + addr;
-    });
+    link.href = 'mai' + 'lto:' + u + '@' + d + '.' + t;
   })();
 
 })();
