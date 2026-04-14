@@ -815,8 +815,8 @@
     "name": "Mt. Carru",
     "elevation_ft": 8595,
     "prominence_ft": 955,
-    "lat": 48.851,
-    "lon": -121.2271,
+    "lat": 48.831994,
+    "lon": -120.55433,
     "images": [
       "images/Mt. Carru/17831.jpg"
     ]
@@ -859,7 +859,7 @@
     "elevation_ft": 8745,
     "prominence_ft": 3265,
     "lat": 48.82931,
-    "lon": -120.53705,
+    "lon": -120.53745,
     "images": [
       "images/Mt. Lago/17255.jpg"
     ]
