@@ -352,7 +352,8 @@
       "images/Dorado Needle/Screenshot 2026-04-30 at 12.09.45\u202fPM.png",
       "images/Dorado Needle/Screenshot 2026-04-30 at 12.10.21\u202fPM.png",
       "images/Dorado Needle/Screenshot 2026-04-30 at 12.10.58\u202fPM.png",
-      "images/Dorado Needle/Screenshot 2026-04-30 at 12.11.37\u202fPM.png"
+      "images/Dorado Needle/Screenshot 2026-04-30 at 12.11.37\u202fPM.png",
+      "images/Dorado Needle/dorad.png"
     ]
   },
   {
@@ -604,7 +605,8 @@
     "lon": -121.10428,
     "images": [
       "images/Klawatti Peak/66672.jpg",
-      "images/Klawatti Peak/IMG_2175.jpg"
+      "images/Klawatti Peak/IMG_2175.jpg",
+      "images/Klawatti Peak/IMG_4171.JPG"
     ]
   },
   {
@@ -775,8 +777,8 @@
     "name": "Mox Peaks,NW Spire",
     "elevation_ft": 8407,
     "prominence_ft": 527,
-    "lat": 48.9138,
-    "lon": -121.2948,
+    "lat": 48.95,
+    "lon": -121.257,
     "images": [
       "images/Mox Peaks,NW Spire/DSC03203.jpg",
       "images/Mox Peaks,NW Spire/DSC03217 copy.jpg",
@@ -868,7 +870,8 @@
       "images/Mt. Buckner/Buckner_in_Cascades.jpg",
       "images/Mt. Buckner/IMG_8717 copy 2.jpg",
       "images/Mt. Buckner/Mount_Buckner.jpeg",
-      "images/Mt. Buckner/North_face_of_Buckner_from_the_Boston_Glacier.jpg"
+      "images/Mt. Buckner/North_face_of_Buckner_from_the_Boston_Glacier.jpg",
+      "images/Mt. Buckner/buckner-from-isolation-traverse.jpg"
     ]
   },
   {
@@ -944,6 +947,7 @@
       "images/Mt. Logan/135549.JPG",
       "images/Mt. Logan/DSCF1712.jpg",
       "images/Mt. Logan/Mount_Logan_from_Sahale.jpg",
+      "images/Mt. Logan/from-near-red.JPG",
       "images/Mt. Logan/p23396L.jpg"
     ]
   },
@@ -1006,8 +1010,8 @@
     "name": "Mt. Redoubt",
     "elevation_ft": 8969,
     "prominence_ft": 1649,
-    "lat": 48.95783,
-    "lon": -121.30078,
+    "lat": 48.95,
+    "lon": -121.296,
     "images": [
       "images/Mt. Redoubt/120628.jpg",
       "images/Mt. Redoubt/DSC01053 copy.jpg",
@@ -1285,7 +1289,9 @@
       "images/Snowfield Peak/119211.jpg",
       "images/Snowfield Peak/16528 copy.png",
       "images/Snowfield Peak/16528.webp",
-      "images/Snowfield Peak/p521L.jpg"
+      "images/Snowfield Peak/from-near-red.JPG",
+      "images/Snowfield Peak/p521L.jpg",
+      "images/Snowfield Peak/snowfield-from-isolation-traverse.jpg"
     ]
   },
   {
@@ -1295,10 +1301,9 @@
     "lat": 48.963,
     "lon": -121.24753,
     "images": [
-      "images/Snowfield Peak/119211.jpg",
-      "images/Snowfield Peak/16528 copy.png",
-      "images/Snowfield Peak/16528.webp",
-      "images/Snowfield Peak/p521L.jpg"
+      "images/Solitude/PXL_20230630_145405598.jpg",
+      "images/Solitude/PXL_20230630_174042725.webp",
+      "images/Solitude/from-custer.png"
     ]
   },
   {
